@@ -34,14 +34,17 @@ export default {
       // enter your code here
       const data = await axios({
         url: '/login',
-        methode: 'post',
+        method: 'post',
         contentYpe: 'application/json',
         data: {
           email: this.email,
           password: this.password,
         },
       });
-      console.log(data);
+      const { id, name } = data.data;
+      localStorage.setItem('id', id);
+      localStorage.setItem('name', name);
+      this.$router.push('/').catch(() => {});
     },
   },
 };
