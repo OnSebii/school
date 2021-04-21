@@ -5,9 +5,7 @@ const users = require('../model/users.js');
 // enter your code here
 router.post('/login', (req, res) => {
   console.log(req);
-
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email, password } = req.body;
 
   if (email && password) {
     const user = users.find((el) => el.email === email && el.password === password);
@@ -28,6 +26,12 @@ router.post('/register', (req, res) => {
 
 router.get('/secretdata', (req, res) => {
   // enter your code here
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.clearCookie(process.env.SESSION_NAME);
+  res.redirect('/');
 });
 
 module.exports = router;

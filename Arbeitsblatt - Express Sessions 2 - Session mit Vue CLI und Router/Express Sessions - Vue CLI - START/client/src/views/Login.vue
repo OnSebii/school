@@ -33,7 +33,7 @@ export default {
     async login() {
       // enter your code here
       const data = await axios({
-        url: 'http://127.0.0.1:3000/login',
+        url: '/login',
         methode: 'post',
         contentYpe: 'application/json',
         data: {

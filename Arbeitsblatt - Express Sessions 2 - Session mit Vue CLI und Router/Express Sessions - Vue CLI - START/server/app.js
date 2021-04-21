@@ -3,7 +3,6 @@ const morgan = require('morgan');
 const path = require('path');
 const routes = require('./routes');
 const errorHandler = require('./middleware/errorHandler');
-const cors = require('cors');
 let session = require('express-session');
 
 require('dotenv').config({ path: __dirname + '/.env' });
@@ -11,7 +10,6 @@ require('dotenv').config({ path: __dirname + '/.env' });
 const app = express();
 
 app.use(morgan('dev'));
-app.use(cors());
 
 app.use(express.static(path.join(__dirname, '/public')));
 
