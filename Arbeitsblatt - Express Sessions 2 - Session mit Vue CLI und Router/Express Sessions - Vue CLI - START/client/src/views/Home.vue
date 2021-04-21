@@ -49,8 +49,8 @@ export default {
   },
   created() {
     // enter your code here
-    this.user.id = localStorage.getItem('id');
-    this.user.name = localStorage.getItem('name');
+    if (localStorage.getItem('id') != null) this.user.id = localStorage.getItem('id');
+    if (localStorage.getItem('name') != null) this.user.name = localStorage.getItem('name');
   },
 };
 </script>

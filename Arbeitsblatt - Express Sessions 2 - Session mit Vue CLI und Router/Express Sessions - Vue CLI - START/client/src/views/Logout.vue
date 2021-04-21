@@ -15,21 +15,11 @@ import axios from 'axios';
 export default {
   async created() {
     // enter your code here
-  },
-  methods: {
-    async login() {
-      // enter your code here
-      const data = await axios({
-        url: '/login',
-        method: 'post',
-        contentYpe: 'application/json',
-        data: {
-          email: this.email,
-          password: this.password,
-        },
-      });
-      console.log(data);
-    },
+    await axios({
+      url: '/logout',
+      method: 'get',
+    });
+    localStorage.clear();
   },
 };
 </script>

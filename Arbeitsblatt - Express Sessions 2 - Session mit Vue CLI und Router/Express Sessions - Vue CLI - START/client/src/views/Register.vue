@@ -25,7 +25,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -38,6 +37,20 @@ export default {
   methods: {
     async register() {
       // enter your code here
+      const data = await axios({
+        url: '/register',
+        method: 'post',
+        contentYpe: 'application/json',
+        data: {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        },
+      });
+      const { id, name } = data.data;
+      localStorage.setItem('id', id);
+      localStorage.setItem('name', name);
+      this.$router.push('/').catch(() => {});
     },
   },
 };
