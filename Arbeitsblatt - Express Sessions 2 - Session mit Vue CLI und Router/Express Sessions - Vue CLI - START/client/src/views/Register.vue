@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -47,10 +48,8 @@ export default {
           password: this.password,
         },
       });
-      const { id, name } = data.data;
-      localStorage.setItem('id', id);
-      localStorage.setItem('name', name);
-      this.$router.push('/').catch(() => {});
+      this.message = data;
+      this.$router.push('/login').catch(() => {});
     },
   },
 };

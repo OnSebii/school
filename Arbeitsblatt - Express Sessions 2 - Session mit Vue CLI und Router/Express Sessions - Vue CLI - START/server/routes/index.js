@@ -21,6 +21,20 @@ router.post('/login', (req, res) => {
 
 router.post('/register', (req, res) => {
   // enter your code here
+  const { email, name, password } = req.body;
+  if (email && name && password) {
+    const checkMail = users.find((el) => el.email === email);
+    if (checkMail) res.status(409).send('E-Mail already registered');
+    users.push({
+      id: users.length - 1,
+      email,
+      name,
+      password,
+    });
+    res.status(200).send('ok');
+  } else {
+    res.status(400).send('Registration failed');
+  }
 });
 
 router.get('/secretdata', (req, res) => {
