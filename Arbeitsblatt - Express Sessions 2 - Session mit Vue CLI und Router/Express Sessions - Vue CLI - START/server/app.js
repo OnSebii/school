@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const routes = require('./routes');
 const errorHandler = require('./middleware/errorHandler');
+const history = require('connect-history-api-fallback');
 let session = require('express-session');
 
 require('dotenv').config({ path: __dirname + '/.env' });
@@ -11,6 +12,8 @@ const app = express();
 
 app.use(morgan('dev'));
 
+app.use(express.static(path.join(__dirname, '/public')));
+app.use(history());
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(express.json());

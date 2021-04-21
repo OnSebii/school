@@ -30,7 +30,9 @@ export default {
   },
   async created() {
     // enter your code here
-    const data = await axios({
+    if (localStorage.getItem('id') != null) this.user.id = localStorage.getItem('id');
+    if (localStorage.getItem('name') != null) this.user.name = localStorage.getItem('name');
+    const { data } = await axios({
       url: '/secretdata',
       method: 'get',
     });
