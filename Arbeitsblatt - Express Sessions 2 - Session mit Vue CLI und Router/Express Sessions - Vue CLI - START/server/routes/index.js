@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
 });
 
 router.get('/secretdata', redirectLogin, (req, res) => {
-  return res.status(200).end('the prime number is 2305843009213693951');
+  return res.status(200).send('the prime number is 2305843009213693951');
 });
 
 module.exports = router;
