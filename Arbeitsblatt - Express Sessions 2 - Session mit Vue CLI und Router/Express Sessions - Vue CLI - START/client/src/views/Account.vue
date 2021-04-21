@@ -1,9 +1,7 @@
 <template>
   <div id="app" class="container d-flex flex-column min-vh-100">
     <h1 class="text-center my-3">{{ user.name }}'s Account</h1>
-    <div class="mx-auto d-block">
-      <router-link to="/">Home</router-link> | <router-link to="/logout">Logout</router-link>
-    </div>
+    <div class="mx-auto d-block"><router-link to="/">Home</router-link> | <router-link to="/logout">Logout</router-link></div>
     <p v-if="prime != null" class="text-center my-3">You secret: {{ prime }}</p>
     <p class="text-center font-weight-bold mt-3">Please enter your credit card number below.</p>
     <div class="row">
@@ -19,7 +17,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -32,6 +30,11 @@ export default {
   },
   async created() {
     // enter your code here
+    const data = await axios({
+      url: '/secretdata',
+      method: 'get',
+    });
+    this.prime = data;
   },
 };
 </script>
