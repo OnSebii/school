@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const users = require('../model/users.js');
 
+const redirectLogin = (req, res, next) => {
+  if (!req.session.userId) res.status(400).send('You are not logged in!');
+  else next();
+};
+
 // enter your code here
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
@@ -15,9 +20,12 @@ router.post('/login', (req, res) => {
   } else res.status(400).send('Login failed');
 });
 
-// router.get('/logout', redirectLogin, (req, res) => {
-//   // enter your code here
-// });
+router.get('/logout', redirectLogin, (req, res) => {
+  // enter your code here
+  req.session.destroy();
+  res.clearCookie(process.env.SESSION_NAME);
+  res.status(200).send('');
+});
 
 router.post('/register', (req, res) => {
   // enter your code here
@@ -37,15 +45,8 @@ router.post('/register', (req, res) => {
   }
 });
 
-router.get('/secretdata', (req, res) => {
-  // enter your code here
+router.get('/secretdata', redirectLogin, (req, res) => {
   return res.status(200).end('the prime number is 2305843009213693951');
-});
-
-router.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.clearCookie(process.env.SESSION_NAME);
-  res.status(200).send('');
 });
 
 module.exports = router;
