@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const router = express.Router();
 
-const { getAllCocktails, getCocktailByName, getCocktailByPrice } = require('../model/functions.js');
+const { getAllCocktails, getCocktailByName, getCocktailByPrice, deleteCocktail } = require('../model/functions.js');
 
 router.get(
   '/cocktails',
@@ -28,5 +28,14 @@ router.get(
     res.status(result.status).send(result.data);
   }),
 );
+
+router.delete(
+  '/cocktails/:name',
+  asyncHandler(async (req, res) => {
+    let result = await deleteCocktail(req.params.name);
+    res.status(result.status).send(result.data);
+  }),
+);
+
 
 module.exports = router;
