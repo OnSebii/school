@@ -18,4 +18,12 @@ async function getCocktailByName(name) {
   };
 }
 
-module.exports = { getAllCocktails, getCocktailByName };
+async function getCocktailByPrice(price) {
+  const { rows } = await db.query('select cname, preis from cocktail where preis <= $1', [price]);
+  return {
+    data: rows,
+    status: 200,
+  };
+}
+
+module.exports = { getAllCocktails, getCocktailByName, getCocktailByPrice };
