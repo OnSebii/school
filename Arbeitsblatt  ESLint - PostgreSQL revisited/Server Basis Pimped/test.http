@@ -4,4 +4,16 @@ get http://127.0.0.1:3000/cocktails/Alice/zutaten
 ################################
 get http://127.0.0.1:3000/cocktails/7.20
 ################################
-delete http://127.0.0.1:3000/cocktails/Adonis
+delete http://127.0.0.1:3000/cocktail/Adonis
+################################
+post http://127.0.0.1:3000/cocktail
+Content-Type: application/json
+
+{
+    "cname": "4CHitAmoUs",
+    "preis": 12.20,
+    "zubereitung": "In der 4CHITM",
+    "kid": 1,
+    "zgid": 1,
+    "sgid": 1
+}
