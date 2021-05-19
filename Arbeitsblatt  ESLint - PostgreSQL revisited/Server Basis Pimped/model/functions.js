@@ -54,14 +54,16 @@ async function addCocktail(cname, preis, zubereitung, kid, zgid, sgid) {
   };
 }
 
-async function updateCocktail(cname, preis, zubereitung, kid, zgid, sgid) {
-  await db.query('insert into cocktail(cname, preis, zubereitung, kid, zgid, sgid) values ($1, $2, $3, $4, $5, $6)', [cname, preis, zubereitung, kid, zgid, sgid]);
+async function updateCocktail(name, data) {
+  let props = [];
+  for (const key in data) props.push(`${key}='${data[key]}'`);
 
-  const { rows } = await db.query('select * from cocktail');
+  const { rows } = await db.query(`Update cocktail set ${props.join(',')} where cname = $1 returning preis`, [name]);
+
   return {
-    data: `Inserted ${rows.length}`,
+    data: `Updated to ${rows[0].preis}`,
     status: 200,
   };
 }
 
-module.exports = { getAllCocktails, getCocktailByName, getCocktailByPrice, deleteCocktail, addCocktail };
+module.exports = { getAllCocktails, getCocktailByName, getCocktailByPrice, deleteCocktail, addCocktail, updateCocktail };

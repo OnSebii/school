@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const router = express.Router();
 
-const { getAllCocktails, getCocktailByName, getCocktailByPrice, deleteCocktail, addCocktail } = require('../model/functions.js');
+const { getAllCocktails, getCocktailByName, getCocktailByPrice, deleteCocktail, addCocktail, updateCocktail } = require('../model/functions.js');
 
 router.get(
   '/cocktails',
@@ -42,6 +42,14 @@ router.post(
   asyncHandler(async (req, res) => {
     const { cname, preis, zubereitung, kid, zgid, sgid } = req.body;
     let result = await addCocktail(cname, preis, zubereitung, kid, zgid, sgid);
+    res.status(result.status).send(result.data);
+  }),
+);
+
+router.patch(
+  '/cocktail/:name',
+  asyncHandler(async (req, res) => {
+    let result = await updateCocktail(req.params.name, req.body);
     res.status(result.status).send(result.data);
   }),
 );
