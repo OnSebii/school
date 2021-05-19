@@ -10,7 +10,7 @@ async function getAllCocktails() {
 
 async function getCocktailByName(name) {
   const { rows } = await db.query('select zbez from cocktail join besteht b on cocktail.cid = b.cid join zutat z on b.zid = z.zid where cname = $1', [name]);
-  let list = [];
+  const list = [];
   rows.forEach((el) => list.push(el.zbez));
   return {
     data: list,
@@ -55,7 +55,7 @@ async function addCocktail(cname, preis, zubereitung, kid, zgid, sgid) {
 }
 
 async function updateCocktail(name, data) {
-  let props = [];
+  const props = [];
   for (const key in data) props.push(`${key}='${data[key]}'`);
 
   const { rows } = await db.query(`Update cocktail set ${props.join(',')} where cname = $1 returning preis`, [name]);
@@ -66,4 +66,11 @@ async function updateCocktail(name, data) {
   };
 }
 
-module.exports = { getAllCocktails, getCocktailByName, getCocktailByPrice, deleteCocktail, addCocktail, updateCocktail };
+module.exports = {
+  getAllCocktails,
+  getCocktailByName,
+  getCocktailByPrice,
+  deleteCocktail,
+  addCocktail,
+  updateCocktail,
+};

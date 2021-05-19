@@ -8,7 +8,7 @@ const { getAllCocktails, getCocktailByName, getCocktailByPrice, deleteCocktail, 
 router.get(
   '/cocktails',
   asyncHandler(async (req, res) => {
-    let result = await getAllCocktails();
+    const result = await getAllCocktails();
     res.status(result.status).send(result.data);
   }),
 );
@@ -16,7 +16,7 @@ router.get(
 router.get(
   '/cocktails/:name/zutaten',
   asyncHandler(async (req, res) => {
-    let result = await getCocktailByName(req.params.name);
+    const result = await getCocktailByName(req.params.name);
     res.status(result.status).send(result.data);
   }),
 );
@@ -24,7 +24,7 @@ router.get(
 router.get(
   '/cocktails/:price',
   asyncHandler(async (req, res) => {
-    let result = await getCocktailByPrice(req.params.price);
+    const result = await getCocktailByPrice(req.params.price);
     res.status(result.status).send(result.data);
   }),
 );
@@ -32,7 +32,7 @@ router.get(
 router.delete(
   '/cocktail/:name',
   asyncHandler(async (req, res) => {
-    let result = await deleteCocktail(req.params.name);
+    const result = await deleteCocktail(req.params.name);
     res.status(result.status).send(result.data);
   }),
 );
@@ -41,7 +41,7 @@ router.post(
   '/cocktail',
   asyncHandler(async (req, res) => {
     const { cname, preis, zubereitung, kid, zgid, sgid } = req.body;
-    let result = await addCocktail(cname, preis, zubereitung, kid, zgid, sgid);
+    const result = await addCocktail(cname, preis, zubereitung, kid, zgid, sgid);
     res.status(result.status).send(result.data);
   }),
 );
@@ -49,7 +49,7 @@ router.post(
 router.patch(
   '/cocktail/:name',
   asyncHandler(async (req, res) => {
-    let result = await updateCocktail(req.params.name, req.body);
+    const result = await updateCocktail(req.params.name, req.body);
     res.status(result.status).send(result.data);
   }),
 );
