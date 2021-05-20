@@ -1,0 +1,47 @@
+{
+  "volksbegehren": [
+    {
+      "id": 1,
+      "name": "Bedingungsloses Grundeinkommen",
+      "initiator": "Peter Hofer",
+      "unterschriften": ["Franz Niederhofer", "Jonas Braun", "Stanis Iveljic", "Silvio Massmer"]
+    },
+    {
+      "id": 2,
+      "name": "Für Klimaschutz",
+      "initiator": "Susanne Schneider",
+      "unterschriften": []
+    },
+    {
+      "id": 3,
+      "name": "CETA-Volksabstimmung",
+      "initiator": "Ivan Relic",
+      "unterschriften": ["Jonas Braun", "Stanis Iveljic", "Sabine Würfel", "Robert Kovacs", "James Jones"]
+    },
+    {
+      "id": 4,
+      "name": "Frauenvolksbegehren",
+      "initiator": "Johanna Dohnal",
+      "unterschriften": ["Janina Luger", "Steffi Gregor", "Sabine Würfel", "Rudi Grundschober"]
+    },
+    {
+      "id": 5,
+      "name": "Don't Smoke",
+      "initiator": "Georg Randi",
+      "unterschriften": [
+        "Janina Luger",
+        "Franz Niederhofer",
+        "Jonas Braun",
+        "Steffi Gregor",
+        "Sabine Würfel",
+        "Rudi Grundschober"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "ORF ohne Zwangsgebühren",
+      "initiator": "Maria Gruber",
+      "unterschriften": ["Hans Wolf", "Jenny Luger", "Stefan Niederhofer", "Jonas Brauner", "Stan Kilian"]
+    }
+  ]
+}

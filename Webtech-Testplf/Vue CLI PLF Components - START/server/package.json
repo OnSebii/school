@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "starter file for json-server",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server volksbegehren.json --watch"
+  },
+  "author": "RB",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}
