@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const path = require('path');
 const routes = require('./routes');
 require('colors');
+require('./db/connect.js');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 require('dotenv').config();
 
